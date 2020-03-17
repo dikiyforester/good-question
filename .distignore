@@ -3,6 +3,10 @@
 /.git
 /.github
 /node_modules
+/grunt
 
 .distignore
 .gitignore
+Gruntfile.js
+package-lock.json
+package.json
