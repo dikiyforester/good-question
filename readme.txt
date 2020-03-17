@@ -2,8 +2,8 @@
 Contributors: dikiy_forester
 Tags: registration, antispam, buddypress
 Requires at least: 3.0.1
-Tested up to: 3.5.1
-Stable tag: 1.1
+Tested up to: 5.4
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,13 +53,18 @@ Key features of the plugin:
 
 == Changelog ==
 
-= 1.1 =
+= 1.2.0 =
+* Fixed translation
+* Fixed formatting
+* Updated compatibility
+
+= 1.1.0 =
 * Provided compatibility with BuddyPress SignUP form
 
 = 1.0.1 =
 * Fixed "Registration Page" option
 
 
-= 1.0 =
+= 1.0.0 =
 * Initial release
 

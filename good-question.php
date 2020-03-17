@@ -3,7 +3,7 @@
  * Plugin Name: Good Question
  * Plugin URI:
  * Description: Simple plugin to create a unique question and prevent spam-bots registration on your site.
- * Version: 1.1
+ * Version: 1.2.0
  * Release Date: 02/10/2013
  * Author: Artem Frolov (dikiyforester)
  * Author URI: https://arthemes.org
