@@ -2,11 +2,13 @@
 /*
  * Plugin Name: Good Question
  * Plugin URI:
- * Description: Simple plugin to create an unique question and prevent spam-bots registration on your site.
+ * Description: Simple plugin to create a unique question and prevent spam-bots registration on your site.
  * Version: 1.1
  * Release Date: 02/10/2013
  * Author: Artem Frolov (dikiyforester)
  * Author URI: https://arthemes.org
+ * Domain Path: /languages
+ * Text Domain: good-question
  * License: GPL2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
@@ -17,10 +19,10 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 define( 'GQ_FOLDER', 'good-question' );
-define( 'GQ_DIR', WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . GQ_FOLDER );
-define( 'GQ_URL', WP_PLUGIN_URL . '/' . GQ_FOLDER );
-define( 'GQ_TITLE', 'Good Question' );
-define( 'GQ_MENU', 'Good Question' );
+define( 'GQ_DIR', dirname( __FILE__ ) );
+define( 'GQ_URL', plugins_url( '', __FILE__ ) );
+
+load_plugin_textdomain( 'good-question', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 if ( is_admin() ) {
 	require( GQ_DIR . '/includes/gq-admin.php' );
@@ -104,8 +106,8 @@ function gq_print_question() {
 	?>
 
 	<div id="gq-wrapper">
-		<h3 id="gq-title"><?php esc_html_e( $question['title'] ); ?></h3>
-		<p id="gq-question"><?php esc_html_e( $question['question'] ); ?></p>
+		<h3 id="gq-title"><?php echo esc_html( $question['title'] ); ?></h3>
+		<p id="gq-question"><?php echo esc_html( $question['question'] ); ?></p>
 			<?php do_action( 'bp_go_home_bot_errors' ); ?>
 		<ol id="gq-answers-list">
 			<?php
@@ -115,16 +117,16 @@ function gq_print_question() {
 					continue;
 				}
 				?>
-				<li id="gq-answer-li_<?php esc_attr_e( $key ); ?>">
-					<input type="checkbox" <?php esc_attr_e( gq_checked_answers( $answer['text'] ) ); ?> name="gq_answers[]" value="<?php trim( esc_attr_e( $answer['text'] ) ); ?>" id="gq_answer_<?php esc_attr_e( $key ); ?>" class="checkboxlist" />
-					<span class="gq-answer-placeholder" id="gq-answer-placeholder_<?php esc_attr_e( $key ); ?>"></span>
-					<span class="gq-answer-text" id="gq-answer-text_<?php esc_attr_e( $key ); ?>">&nbsp;&nbsp;&nbsp;<?php trim( esc_html_e( $answer['text'] ) ); ?></span>
+				<li id="gq-answer-li_<?php echo esc_attr( $key ); ?>">
+					<input type="checkbox" <?php echo esc_attr( gq_checked_answers( $answer['text'] ) ); ?> name="gq_answers[]" value="<?php echo esc_attr( trim( $answer['text'] ) ); ?>" id="gq_answetrim( r_<?php echo esc_attr( $key ); ?>" class="checkboxlist" />
+					<span class="gq-answer-placeholder" id="gq-answer-placeholder_<?php echo esc_attr( $key ); ?>"></span>
+					<span class="gq-answer-text" id="gq-answer-text_<?php echo esc_attr( $key ); ?>">&nbsp;&nbsp;&nbsp;<?php echo esc_html( trim( $answer['text'] ) ); ?></span>
 				</li>
 				<?php
 			}
 			?>
 		</ol>
-		<span id="gq-description"><?php esc_html_e( $question['desc'] ); ?></span>
+		<span id="gq-description"><?php echo esc_html( $question['desc'] ); ?></span>
 	</div>
 	<?php
 }

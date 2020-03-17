@@ -19,11 +19,11 @@
 function gq_default_config() {
 	$gq_default_config = array(
 		'gq_question'  => array(
-			'title'    => __( 'Please answer the following anti-spam test', 'appthemes' ),
-			'desc'     => __( 'Just select the correct answers among the proposed', 'appthemes' ),
-			'question' => __( 'Select all objects with corners from the list below:', 'appthemes' ),
+			'title'    => __( 'Please answer the following anti-spam test', 'good-question' ),
+			'desc'     => __( 'Just select the correct answers among the proposed', 'good-question' ),
+			'question' => __( 'Select all objects with corners from the list below:', 'good-question' ),
 		),
-		'gq_msg'       => 'ERROR: Failed Spam test - Please try again...',
+		'gq_msg'       => __( 'ERROR: Failed Spam test - Please try again...', 'good-question' ),
 		'gq_styles'    => gq_custom_styles(),
 		'gq_activated' => '',
 		'gq_clear'     => '',
@@ -96,19 +96,18 @@ function gq_custom_styles() {
 	$themename = $theme->name;
 
 	switch ( $themename ) {
-		case 'ClassiPress':
 		case 'Flannel':
 		case 'CLASSIECO':
 			$styles = '#gq-wrapper{float: left; clear: both; width: 100%; margin-left: 140px;}
 #gq-question{font-style: italic; width: 100%;}
-#gq-description{color: #777; font-style: italic; font-size: 10px;}
+#gq-description{color: #777; font-style: italic;}
 #gq-answers-list{list-style-type: none; padding-left: 2em;}';
 			break;
 
 		case 'Clipper':
 			$styles = '#gq-wrapper{float: left; clear: both; width: 100%; margin-left: 166px;}
 #gq-question{font-style: italic; width: 100%;}
-#gq-description{color: #777; font-style: italic; font-size: 10px;}
+#gq-description{color: #777; font-style: italic;}
 #gq-answers-list{list-style-type: none; padding-left: 2em;}
 #gq-answers-list li{margin: 0;}';
 			break;
@@ -117,7 +116,7 @@ function gq_custom_styles() {
 		case 'Quality Control':
 			$styles = '#gq-wrapper{margin: 20px 0; width: 75%; position: relative;}
 #gq-question{font-style: italic; width: 100%;}
-#gq-description{color: #777; font-style: italic; font-size: 10px;}
+#gq-description{color: #777; font-style: italic;}
 #gq-answers-list{list-style-type: none; padding-left: 2em;}
 #gq-answers-list li{margin: 0;}';
 			break;
@@ -125,7 +124,7 @@ function gq_custom_styles() {
 		default:
 			$styles = '#gq-wrapper{float: left; clear: both; width: 100%;}
 #gq-question{font-style: italic; width: 100%;}
-#gq-description{color: #777; font-style: italic; font-size: 10px;}
+#gq-description{color: #777; font-style: italic;}
 #gq-answers-list{list-style-type: none !important; padding-left: 2em;}';
 			break;
 	}

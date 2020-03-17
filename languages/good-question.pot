@@ -1,0 +1,211 @@
+# Copyright (C) 2020 Artem Frolov (dikiyforester)
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Good Question 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-17 17:36:24+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Last-Translator: dikiyforester\n"
+"Language-Team: dikiyforester\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#. Plugin Name of the plugin/theme
+msgid "Good Question"
+msgstr ""
+
+#: includes/gq-admin.php:66
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: includes/gq-admin.php:72
+msgid "Settings saved."
+msgstr ""
+
+#: includes/gq-admin.php:93
+msgid ""
+"NOTICE: Question will not appear on form while not set property \"Activate "
+"Now\"!"
+msgstr ""
+
+#: includes/gq-admin.php:104
+msgid "Good Question plugin"
+msgstr ""
+
+#: includes/gq-admin.php:109 includes/gq-admin.php:223
+msgid "Save Changes"
+msgstr ""
+
+#: includes/gq-admin.php:114
+msgid "Question Settings"
+msgstr ""
+
+#: includes/gq-admin.php:119
+msgid "Registration Page Title | Slug | ID :"
+msgstr ""
+
+#: includes/gq-admin.php:123
+msgid ""
+"If your theme uses special registration page - enter here page Slug or "
+"Title or ID."
+msgstr ""
+
+#: includes/gq-admin.php:124
+msgid ""
+"If your theme uses standard WordPress login/register page - forget this "
+"option and go next."
+msgstr ""
+
+#: includes/gq-admin.php:128
+msgid "Title:"
+msgstr ""
+
+#: includes/gq-admin.php:131
+msgid "This is the heading of the question block. (CSS ID: #gq-title)"
+msgstr ""
+
+#: includes/gq-admin.php:135
+msgid "Question:"
+msgstr ""
+
+#: includes/gq-admin.php:139
+msgid "Question to which the user must answer. (CSS ID: #gq-question)"
+msgstr ""
+
+#: includes/gq-admin.php:140
+msgid ""
+"NOTICE: Never use the question and answers by default. Come up with "
+"something unique!"
+msgstr ""
+
+#: includes/gq-admin.php:144
+msgid "Description:"
+msgstr ""
+
+#: includes/gq-admin.php:147
+msgid ""
+"Description, which displays after answers and helps user understand what to "
+"do. (CSS ID: #gq-description)"
+msgstr ""
+
+#: includes/gq-admin.php:151
+msgid "Error Message:"
+msgstr ""
+
+#: includes/gq-admin.php:154
+msgid ""
+"Error message, which will appear if user not correct answer to the question "
+"and send it to the server."
+msgstr ""
+
+#: includes/gq-admin.php:158
+msgid "Custom Styles:"
+msgstr ""
+
+#: includes/gq-admin.php:162
+msgid "This is default CSS properties for Question block on form."
+msgstr ""
+
+#: includes/gq-admin.php:163
+msgid ""
+"NOTICE: These properties may be different for different themes and "
+"childthemes."
+msgstr ""
+
+#: includes/gq-admin.php:164
+msgid ""
+"You can set suitable styles and assign different colors or background "
+"images for each individual Answer."
+msgstr ""
+
+#: includes/gq-admin.php:169
+msgid "Activate Now:"
+msgstr ""
+
+#: includes/gq-admin.php:173
+msgid "Output of the Question is disabled by default."
+msgstr ""
+
+#: includes/gq-admin.php:174
+msgid ""
+"It allows admin to set unique question and answers, and only after that "
+"activate Question functionality for users."
+msgstr ""
+
+#: includes/gq-admin.php:175
+msgid "Set this option to display Question block on the form."
+msgstr ""
+
+#: includes/gq-admin.php:180
+msgid "Delete Plugin Options after deactivation:"
+msgstr ""
+
+#: includes/gq-admin.php:183
+msgid ""
+"Set this option if you want to deactivate plugin and clear database from "
+"plugin options."
+msgstr ""
+
+#: includes/gq-admin.php:199
+msgid "Answers Settings"
+msgstr ""
+
+#: includes/gq-admin.php:200
+msgid "Answer Text"
+msgstr ""
+
+#: includes/gq-admin.php:201
+msgid "It's True?"
+msgstr ""
+
+#: includes/gq-admin.php:202
+msgid "Display Answer?"
+msgstr ""
+
+#: includes/gq-admin.php:208
+msgid "Answer #"
+msgstr ""
+
+#: includes/gq-init.php:22
+msgid "Please answer the following anti-spam test"
+msgstr ""
+
+#: includes/gq-init.php:23
+msgid "Just select the correct answers among the proposed"
+msgstr ""
+
+#: includes/gq-init.php:24
+msgid "Select all objects with corners from the list below:"
+msgstr ""
+
+#: includes/gq-init.php:26
+msgid "ERROR: Failed Spam test - Please try again..."
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Simple plugin to create a unique question and prevent spam-bots "
+"registration on your site."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Artem Frolov (dikiyforester)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://arthemes.org"
+msgstr ""
