@@ -98,130 +98,180 @@ function gq_get_admin_page_html() {
 	}
 	?>
 	<div class="wrap">
-		<div id="icon-options-general" class="gq_options_img icon32">
-			<br />
-		</div>
 		<h2><?php esc_html_e( 'Good Question plugin', 'good-question' ); ?></h2>
 		<br/>
-		<div>
-			<form id="gq_options_form" name="gq_options_form" method="post" action="" enctype="multipart/form-data">
-				<input type="hidden" name="gq_submit_hidden" value="Y">
-				<p><input id="gq_submit_top-btn" class="button-primary" type="submit" name="Save_top" value="<?php esc_attr_e( 'Save Changes', 'good-question' ); ?>" /></p>
-				<table id="gq_question_table" class="widefat">
-					<!-- Question Settings Table -->
-					<thead>
-						<tr>
-							<th colspan="2"><?php esc_html_e( 'Question Settings', 'good-question' ); ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="question-settings-left"><label for="gq_register_page"><?php esc_html_e( 'Registration Page Title | Slug | ID :', 'good-question' ); ?></label></td>
-							<td>
-								<input type="text" name="gq_register_page" class="gq-textbox" value="<?php echo esc_attr( $page ); ?>"/><br />
-								<span class="gq-desc">
-									<?php esc_html_e( 'If your theme uses special registration page - enter here page Slug or Title or ID.', 'good-question' ); ?><br />
-									<?php esc_html_e( 'If your theme uses standard WordPress login/register page - forget this option and go next.', 'good-question' ); ?></span>
-							</td>
-						</tr>
-						<tr>
-							<td class="question-settings-left"><label for="gq_question_title"><?php esc_html_e( 'Title:', 'good-question' ); ?></label></td>
-							<td>
-								<input type="text" name="gq_question_title" class="gq-textbox" value="<?php echo esc_attr( $question['title'] ); ?>"/><br />
-								<span class="gq-desc"><?php esc_html_e( 'This is the heading of the question block. (CSS ID: #gq-title)', 'good-question' ); ?></span>
-							</td>
-						</tr>
-						<tr>
-							<td class="question-settings-left"><label for="gq_question"><?php esc_html_e( 'Question:', 'good-question' ); ?></label></td>
-							<td>
-								<textarea rows="4" cols="60" class="textarea" name="gq_question" ><?php echo esc_textarea( $question['question'] ); ?></textarea><br />
-								<span class="gq-desc">
-									<?php esc_html_e( 'Question to which the user must answer. (CSS ID: #gq-question)', 'good-question' ); ?><br />
-									<?php esc_html_e( 'NOTICE: Never use the question and answers by default. Come up with something unique!', 'good-question' ); ?></span>
-							</td>
-						</tr>
-						<tr>
-							<td class="question-settings-left"><label for="gq_desc"><?php esc_html_e( 'Description:', 'good-question' ); ?></label></td>
-							<td>
-								<textarea rows="4" cols="60" class="textarea" name="gq_desc" ><?php echo esc_textarea( $question['desc'] ); ?></textarea><br />
-								<span class="gq-desc"><?php esc_html_e( 'Description, which displays after answers and helps user understand what to do. (CSS ID: #gq-description)', 'good-question' ); ?></span>
-							</td>
-						</tr>
-						<tr>
-							<td class="question-settings-left"><label for="gq_msg"><?php esc_html_e( 'Error Message:', 'good-question' ); ?></label></td>
-							<td>
-								<textarea rows="4" cols="60" class="textarea" name="gq_msg" ><?php echo esc_textarea( $message ); ?></textarea><br />
-								<span class="gq-desc"><?php esc_html_e( 'Error message, which will appear if user not correct answer to the question and send it to the server.', 'good-question' ); ?></span>
-							</td>
-						</tr>
-						<tr>
-							<td class="question-settings-left"><label for="gq_styles"><?php esc_html_e( 'Custom Styles:', 'good-question' ); ?></label></td>
-							<td>
-								<textarea rows="8" cols="60" class="textarea" name="gq_styles" ><?php echo esc_textarea( $styles ); ?></textarea><br />
-								<span class="gq-desc">
-									<?php esc_html_e( 'This is default CSS properties for Question block on form.', 'good-question' ); ?><br />
-									<?php esc_html_e( 'NOTICE: These properties may be different for different themes and childthemes.', 'good-question' ); ?><br />
-									<?php esc_html_e( 'You can set suitable styles and assign different colors or background images for each individual Answer.', 'good-question' ); ?>
-								</span>
-							</td>
-						</tr>
-						<tr>
-							<td class="question-settings-left"><label for="gq_activated"><?php esc_html_e( 'Activate Now:', 'good-question' ); ?></label></td>
-							<td>
-								<input type="checkbox" name="gq_activated" value="Yes" <?php checked( $activated, 'Yes', true ); ?>/><br />
-								<span class="gq-desc">
-									<?php esc_html_e( 'Output of the Question is disabled by default.', 'good-question' ); ?><br />
-									<?php esc_html_e( 'It allows admin to set unique question and answers, and only after that activate Question functionality for users.', 'good-question' ); ?><br />
-									<?php esc_html_e( 'Set this option to display Question block on the form.', 'good-question' ); ?>
-								</span>
-							</td>
-						</tr>
-						<tr>
-							<td class="question-settings-left"><label for="gq_clear"><?php esc_html_e( 'Delete Plugin Options after deactivation:', 'good-question' ); ?></label></td>
-							<td>
-								<input type="checkbox" name="gq_clear" value="Yes" <?php checked( $clear, 'Yes', true ); ?>/><br />
-								<span class="gq-desc"><?php esc_html_e( 'Set this option if you want to deactivate plugin and clear database from plugin options.', 'good-question' ); ?></span>
-							</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr>
-							<th colspan="2">&nbsp;</th>
-						</tr>
-					</tfoot>
-				</table>
-				<!-- /Question Settings Table -->
-				<br /><br />
-				<!-- Answers Settings Table -->
-				<table id="gq_answers_table" class="widefat">
-					<thead>
-						<tr>
-							<th><?php esc_html_e( 'Answers Settings', 'good-question' ); ?></th>
-							<th><?php esc_html_e( 'Answer Text', 'good-question' ); ?></th>
-							<th><?php esc_html_e( 'It\'s True?', 'good-question' ); ?></th>
-							<th><?php esc_html_e( 'Display Answer?', 'good-question' ); ?></th>
-						</tr>
-					</thead>
-					<tbody>
-	<?php foreach ( $answers as $name => $value ) { ?>
-							<tr>
-								<td class="answers-settings-left"><label for="gq_answer_<?php echo esc_attr( $name ); ?>"><?php esc_html_e( 'Answer #', 'good-question' ); ?><?php echo esc_html( $name ); ?>:</label></td>
-								<td class="answers-text-col"><input type="text" name="gq_answer_<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value['text'] ); ?>"/></td>
-								<td class="answers-true-col"><input type="checkbox" name="gq_true_<?php echo esc_attr( $name ); ?>" value="Yes" <?php checked( $value['true'], 'Yes', true ); ?>/></td>
-								<td class="answers-display-col"><input type="checkbox" name="gq_display_<?php echo esc_attr( $name ); ?>" value="Yes" <?php checked( $value['disp'], 'Yes', true ); ?>/></td>
-							</tr>
-	<?php } ?>
-					</tbody>
-					<tfoot>
-						<tr>
-							<th colspan="4">&nbsp;</th>
-						</tr>
-					</tfoot>
-					<!-- /Answers Settings Table -->
-				</table>
-				<br/>
-				<p><input id="acf_submit_bot-btn" class="button-primary" type="submit" name="Save_bot" value="<?php echo esc_attr_e( 'Save Changes', 'good-question' ); ?>" /></p>
-			</form>
+
+		<div id="poststuff">
+
+			<div id="post-body" class="metabox-holder columns-2">
+
+				<div id="postbox-container-1" class="postbox-container">
+
+					<div id="side-sortables" class="meta-box-sortables ui-sortable">
+
+						<div class="postbox" style="min-width: inherit;">
+							<h3 class="hndle"><label for="title"><?php _e( 'It will be always free!', 'good-question' ); ?></label></h3>
+							<div class="inside">
+								<?php esc_attr_e( 'The Good Question plugin was created as a contribution to the development of free open-source software, with a hope that it will be useful to WordPress users. It will always be free, without premium versions or subscriptions.', 'good-question' ); ?>
+							</div>
+						</div>
+
+						<div class="postbox" style="min-width: inherit;">
+							<h3 class="hndle"><label for="title"><?php _e( 'Rate Us', 'good-question' ); ?></label></h3>
+							<div class="inside">
+								<?php echo sprintf( __( 'Like the plugin? Please give us a <a href="%s" target="_blank">rating!</a>', 'good-question' ), 'https://wordpress.org/support/plugin/good-question/reviews/?filter=5' ); ?>
+								<div class="gq-stars-container">
+									<a href="https://wordpress.org/support/plugin/good-question/reviews/?filter=5" target="_blank">
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+										<span class="dashicons dashicons-star-filled"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="postbox" style="min-width: inherit;">
+							<h3 class="hndle"><label for="title"><?php _e( 'Our Other Plugins', 'good-question' ); ?></label></h3>
+							<div class="inside">
+								<?php echo sprintf( __( 'Check out <a target="_blank" href="%s">our other plugins</a>', 'good-question' ), 'https://arthemes.org/category/plugins/' ); ?>
+							</div>
+						</div>
+						<div class="postbox" style="min-width: inherit;">
+							<h3 class="hndle"><label for="title"><?php _e( 'Social', 'good-question' ); ?></label></h3>
+							<div class="inside gq-social-container">
+								<?php echo sprintf( __( '<a target="_blank" href="%s"><span class="dashicons dashicons-twitter"></span> Twitter</a>', 'good-question' ), 'https://twitter.com/arthemes_org' ); ?>
+								<?php echo sprintf( __( '<a target="_blank" href="%s"><span class="dashicons dashicons-github"></span> GitHub</a>', 'good-question' ), 'https://github.com/dikiyforester' ); ?>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div id="postbox-container-2" class="postbox-container">
+
+					<form id="gq_options_form" name="gq_options_form" method="post" action="" enctype="multipart/form-data">
+						<input type="hidden" name="gq_submit_hidden" value="Y">
+						<table id="gq_question_table" class="widefat">
+							<!-- Question Settings Table -->
+							<thead>
+								<tr>
+									<th colspan="2"><?php esc_html_e( 'Question Settings', 'good-question' ); ?></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="question-settings-left"><label for="gq_register_page"><?php esc_html_e( 'Registration Page Title | Slug | ID :', 'good-question' ); ?></label></td>
+									<td>
+										<input type="text" name="gq_register_page" class="gq-textbox" value="<?php echo esc_attr( $page ); ?>"/><br />
+										<span class="gq-desc">
+											<?php esc_html_e( 'If your theme uses special registration page - enter here page Slug or Title or ID.', 'good-question' ); ?><br />
+											<?php esc_html_e( 'If your theme uses standard WordPress login/register page - forget this option and go next.', 'good-question' ); ?></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_question_title"><?php esc_html_e( 'Title:', 'good-question' ); ?></label></td>
+									<td>
+										<input type="text" name="gq_question_title" class="gq-textbox" value="<?php echo esc_attr( $question['title'] ); ?>"/><br />
+										<span class="gq-desc"><?php esc_html_e( 'This is the heading of the question block. (CSS ID: #gq-title)', 'good-question' ); ?></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_question"><?php esc_html_e( 'Question:', 'good-question' ); ?></label></td>
+									<td>
+										<textarea rows="4" cols="60" class="textarea" name="gq_question" ><?php echo esc_textarea( $question['question'] ); ?></textarea><br />
+										<span class="gq-desc">
+											<?php esc_html_e( 'Question to which the user must answer. (CSS ID: #gq-question)', 'good-question' ); ?><br />
+											<?php esc_html_e( 'NOTICE: Never use the question and answers by default. Come up with something unique!', 'good-question' ); ?></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_desc"><?php esc_html_e( 'Description:', 'good-question' ); ?></label></td>
+									<td>
+										<textarea rows="4" cols="60" class="textarea" name="gq_desc" ><?php echo esc_textarea( $question['desc'] ); ?></textarea><br />
+										<span class="gq-desc"><?php esc_html_e( 'Description, which displays after answers and helps user understand what to do. (CSS ID: #gq-description)', 'good-question' ); ?></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_msg"><?php esc_html_e( 'Error Message:', 'good-question' ); ?></label></td>
+									<td>
+										<textarea rows="4" cols="60" class="textarea" name="gq_msg" ><?php echo esc_textarea( $message ); ?></textarea><br />
+										<span class="gq-desc"><?php esc_html_e( 'Error message, which will appear if user not correct answer to the question and send it to the server.', 'good-question' ); ?></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_styles"><?php esc_html_e( 'Custom Styles:', 'good-question' ); ?></label></td>
+									<td>
+										<textarea rows="8" cols="60" class="textarea" name="gq_styles" ><?php echo esc_textarea( $styles ); ?></textarea><br />
+										<span class="gq-desc">
+											<?php esc_html_e( 'This is default CSS properties for Question block on form.', 'good-question' ); ?><br />
+											<?php esc_html_e( 'NOTICE: These properties may be different for different themes and childthemes.', 'good-question' ); ?><br />
+											<?php esc_html_e( 'You can set suitable styles and assign different colors or background images for each individual Answer.', 'good-question' ); ?>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_activated"><?php esc_html_e( 'Activate Now:', 'good-question' ); ?></label></td>
+									<td>
+										<input type="checkbox" name="gq_activated" value="Yes" <?php checked( $activated, 'Yes', true ); ?>/><br />
+										<span class="gq-desc">
+											<?php esc_html_e( 'Output of the Question is disabled by default.', 'good-question' ); ?><br />
+											<?php esc_html_e( 'It allows admin to set unique question and answers, and only after that activate Question functionality for users.', 'good-question' ); ?><br />
+											<?php esc_html_e( 'Set this option to display Question block on the form.', 'good-question' ); ?>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_clear"><?php esc_html_e( 'Delete Plugin Options after deactivation:', 'good-question' ); ?></label></td>
+									<td>
+										<input type="checkbox" name="gq_clear" value="Yes" <?php checked( $clear, 'Yes', true ); ?>/><br />
+										<span class="gq-desc"><?php esc_html_e( 'Set this option if you want to deactivate plugin and clear database from plugin options.', 'good-question' ); ?></span>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th colspan="2">&nbsp;</th>
+								</tr>
+							</tfoot>
+						</table>
+						<!-- /Question Settings Table -->
+						<br /><br />
+						<!-- Answers Settings Table -->
+						<table id="gq_answers_table" class="widefat">
+							<thead>
+								<tr>
+									<th><?php esc_html_e( 'Answers Settings', 'good-question' ); ?></th>
+									<th><?php esc_html_e( 'Answer Text', 'good-question' ); ?></th>
+									<th><?php esc_html_e( 'It\'s True?', 'good-question' ); ?></th>
+									<th><?php esc_html_e( 'Display Answer?', 'good-question' ); ?></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ( $answers as $name => $value ) { ?>
+									<tr>
+										<td class="answers-settings-left"><label for="gq_answer_<?php echo esc_attr( $name ); ?>"><?php esc_html_e( 'Answer #', 'good-question' ); ?><?php echo esc_html( $name ); ?>:</label></td>
+										<td class="answers-text-col"><input type="text" name="gq_answer_<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value['text'] ); ?>"/></td>
+										<td class="answers-true-col"><input type="checkbox" name="gq_true_<?php echo esc_attr( $name ); ?>" value="Yes" <?php checked( $value['true'], 'Yes', true ); ?>/></td>
+										<td class="answers-display-col"><input type="checkbox" name="gq_display_<?php echo esc_attr( $name ); ?>" value="Yes" <?php checked( $value['disp'], 'Yes', true ); ?>/></td>
+									</tr>
+								<?php } ?>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th colspan="4">&nbsp;</th>
+								</tr>
+							</tfoot>
+							<!-- /Answers Settings Table -->
+						</table>
+						<br/>
+						<p><input id="acf_submit_bot-btn" class="button-primary" type="submit" name="Save_bot" value="<?php echo esc_attr_e( 'Save Changes', 'good-question' ); ?>" /></p>
+					</form>
+
+				</div>
+
+			</div>
 		</div>
 	</div>
 	<?php

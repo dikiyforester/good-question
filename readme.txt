@@ -1,9 +1,9 @@
 === Good Question ===
 Contributors: dikiy_forester
-Tags: registration, antispam, buddypress
+Tags: registration, antispam, antibot, buddypress, protection, security
 Requires at least: 3.0.1
 Tested up to: 5.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,21 +12,25 @@ Allows you to create an unique question, easy for humans, but not solvable for t
 
 == Description ==
 
-Simple plugin to prevent spam bots registration on your site.
-Allows you to create a unique question on the registration form, easy for humans, but not solvable for the bot.
+Good Question is a free simple WordPress plugin to stop spam registrations on the site.
+Allows to create a question on the registration form, easy for humans, but not solvable for the spam bots. User must select correct answers, otherwise registration will fail.
 
-Displays simple choice questions on the registration form.
-User must select all the correct answers, if the user makes a mistake - it will display an error message and registration will fail.
+The best thing of this super simple plugin is that it 100% works!
+
+The smartest bots that easily pass the Google reCAPTCHA are helpless against the Good Question. Just because they don’t know what to do with that. Bots are not trained pass the Good Question validation because it’s not so popular as Google reCAPTCHA or other services.
+
+The Good Question plugin successfully protects WordPress sites from spam registrations since 2013 and up for today.
 
 Key features of the plugin:
 
-*   Compatible with most WP themes.
-*   Compatible with BuddyPress themes.
-*   Works with WordPress MU SignUp form.
+*   100% effective. There are no services to help the bot to answer the abstract question, so they can't pass validation.
+*   Compatible with the most of the WordPress themes, including all AppThemes themes.
+*   Works with WordPress MU Sign Up form.
 *   Simple and lightweight.
 *   Allow to create your own unique Question and set of Answers.
 *   Allow to edit all CSS properties for Question and each of Answers separately.
 *   Shuffle Answers after each page load.
+*   There is absolutely no difference of which question and how many answers you configure for a good question, just make it easy for your real visitors.
 *   You can set colors or images through CSS properties, instead of simple text answers.
 
 
@@ -52,6 +56,9 @@ Key features of the plugin:
 
 
 == Changelog ==
+
+= 1.2.1 =
+* Minor changes
 
 = 1.2.0 =
 * Fixed translation

@@ -4,3 +4,18 @@
 .answers-text-col{width: 200px;}
 .answers-true-col{width: 100px;}
 .gq-desc{font-style: italic; color: #999;}
+.gq-stars-container {
+	text-align: center;
+	margin-top: 10px;
+}
+.gq-stars-container span {
+	vertical-align: text-top;
+	color: #ffb900;
+}
+.gq-social-container a,
+.gq-stars-container a {
+	text-decoration: none;
+}
+div.postbox.yellowish {
+	background-color: #ffffc8;
+}
