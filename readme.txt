@@ -1,19 +1,19 @@
 === Good Question ===
 Contributors: dikiy_forester
-Tags: registration, antispam, antibot, buddypress, protection, security
+Tags: registration, antispam, antibot, buddypress, protection, security, comments
 Requires at least: 3.0.1
 Tested up to: 5.4
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simple plugin to prevent spam-bots registration on your site.
-Allows you to create an unique question, easy for humans, but not solvable for the bots.
+Simple plugin to stop spam comments and registrations on your site.
+Adds a question field on the form, easy for humans, but not solvable for the bots.
 
 == Description ==
 
-Good Question is a free simple WordPress plugin to stop spam registrations on the site.
-Allows to create a question on the registration form, easy for humans, but not solvable for the spam bots. User must select correct answers, otherwise registration will fail.
+Good Question is a free simple WordPress plugin to stop spam comments and registrations on the site.
+Allows to add a question on the comments and registration form, easy for humans, but not solvable for the spam bots. User must select correct answers, otherwise registration will fail.
 
 The best thing of this super simple plugin is that it 100% works!
 
@@ -25,11 +25,12 @@ Key features of the plugin:
 
 *   100% effective. There are no services to help the bot to answer the abstract question, so they can't pass validation.
 *   Compatible with the most of the WordPress themes, including all AppThemes themes.
+*   Works on the Registration form.
 *   Works with WordPress MU Sign Up form.
+*   Works on the Comments form.
 *   Simple and lightweight.
 *   Allow to create your own unique Question and set of Answers.
 *   Allow to edit all CSS properties for Question and each of Answers separately.
-*   Shuffle Answers after each page load.
 *   There is absolutely no difference of which question and how many answers you configure for a good question, just make it easy for your real visitors.
 *   You can set colors or images through CSS properties, instead of simple text answers.
 
@@ -43,7 +44,7 @@ Key features of the plugin:
 5. Open settings page through the 'Settings' -> 'Good Question'
 6. Come up with your unique question and the answers. Complete the appropriate settings fields.
 7. Edit CSS properties if needed.
-8. Set property 'Activate Now!' for display your question on registration form.
+8. Set property 'Display on registration form' or/and 'Display on comments form' for display your question on the appropriate form.
 
 
 == Screenshots ==
@@ -56,6 +57,12 @@ Key features of the plugin:
 
 
 == Changelog ==
+
+= 1.3.0 =
+* Now the plugin can stop spam comments! Enable option "Display on comments form" to protect it.
+* "Activate now" option replaced with "Display on registration form"
+* "Registration Page" option deprecated
+* Minor changes
 
 = 1.2.1 =
 * Minor changes

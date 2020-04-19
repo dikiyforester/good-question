@@ -4,5 +4,3 @@
  * Less you know - sleep tight...
  *
  */
-
-?>

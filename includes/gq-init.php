@@ -21,67 +21,80 @@ function gq_default_config() {
 		'gq_question'  => array(
 			'title'    => __( 'Please answer the following anti-spam test', 'good-question' ),
 			'desc'     => __( 'Just select the correct answers among the proposed', 'good-question' ),
-			'question' => __( 'Select all objects with corners from the list below:', 'good-question' ),
+			'question' => __( '1 + 1 = ?', 'good-question' ),
 		),
 		'gq_msg'       => __( 'ERROR: Failed Spam test - Please try again...', 'good-question' ),
 		'gq_styles'    => gq_custom_styles(),
 		'gq_activated' => '',
+		'gq_comments'  => '',
 		'gq_clear'     => '',
-		'gq_page'      => 'register',
 		'gq_answers'   => array(
 			'1'  => array(
-				'text' => 'Melon',
+				'text' => '1',
 				'true' => '',
 				'disp' => 'Yes',
 			),
 			'2'  => array(
-				'text' => 'Box',
+				'text' => '2',
 				'true' => 'Yes',
 				'disp' => 'Yes',
 			),
 			'3'  => array(
-				'text' => 'Book',
-				'true' => 'Yes',
+				'text' => '3',
+				'true' => '',
 				'disp' => 'Yes',
 			),
 			'4'  => array(
-				'text' => 'Ball',
+				'text' => '4',
 				'true' => '',
-				'disp' => 'Yes',
+				'disp' => '',
 			),
 			'5'  => array(
-				'text' => 'Drop',
+				'text' => '5',
 				'true' => '',
-				'disp' => 'Yes',
+				'disp' => '',
 			),
 			'6'  => array(
-				'text' => 'TV',
-				'true' => 'Yes',
-				'disp' => 'Yes',
+				'text' => '6',
+				'true' => '',
+				'disp' => '',
 			),
 			'7'  => array(
-				'text' => 'Air',
+				'text' => '7',
 				'true' => '',
-				'disp' => 'Yes',
+				'disp' => '',
 			),
 			'8'  => array(
-				'text' => 'Sphere',
+				'text' => '8',
 				'true' => '',
-				'disp' => 'Yes',
+				'disp' => '',
 			),
 			'9'  => array(
-				'text' => 'Tomato',
+				'text' => '9',
 				'true' => '',
-				'disp' => 'Yes',
+				'disp' => '',
 			),
 			'10' => array(
-				'text' => 'Door',
-				'true' => 'Yes',
-				'disp' => 'Yes',
+				'text' => '10',
+				'true' => '',
+				'disp' => '',
 			),
 		),
 	);
 	return $gq_default_config;
+}
+
+/**
+ * Options to be deleted.
+ *
+ * @since 1.3.0
+ *
+ * @return array
+ */
+function gq_deprecated_options() {
+	return array(
+		'gq_page' => '',
+	);
 }
 
 /**
@@ -92,42 +105,10 @@ function gq_default_config() {
  */
 function gq_custom_styles() {
 
-	$theme = wp_get_theme();
-	$themename = $theme->name;
-
-	switch ( $themename ) {
-		case 'Flannel':
-		case 'CLASSIECO':
-			$styles = '#gq-wrapper{float: left; clear: both; width: 100%; margin-left: 140px;}
-#gq-question{font-style: italic; width: 100%;}
-#gq-description{color: #777; font-style: italic;}
-#gq-answers-list{list-style-type: none; padding-left: 2em;}';
-			break;
-
-		case 'Clipper':
-			$styles = '#gq-wrapper{float: left; clear: both; width: 100%; margin-left: 166px;}
-#gq-question{font-style: italic; width: 100%;}
-#gq-description{color: #777; font-style: italic;}
-#gq-answers-list{list-style-type: none; padding-left: 2em;}
-#gq-answers-list li{margin: 0;}';
-			break;
-
-		case 'Vantage':
-		case 'Quality Control':
-			$styles = '#gq-wrapper{margin: 20px 0; width: 75%; position: relative;}
-#gq-question{font-style: italic; width: 100%;}
-#gq-description{color: #777; font-style: italic;}
-#gq-answers-list{list-style-type: none; padding-left: 2em;}
-#gq-answers-list li{margin: 0;}';
-			break;
-
-		default:
-			$styles = '#gq-wrapper{float: left; clear: both; width: 100%;}
+	$styles = '#gq-wrapper{float: left; clear: both; width: 100%;}
 #gq-question{font-style: italic; width: 100%;}
 #gq-description{color: #777; font-style: italic;}
 #gq-answers-list{list-style-type: none !important; padding-left: 2em;}';
-			break;
-	}
 
 	return $styles;
 }

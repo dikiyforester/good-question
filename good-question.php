@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name: Good Question
- * Plugin URI:
- * Description: Simple plugin to create a unique question and prevent spam-bots registration on your site.
- * Version: 1.2.1
+ * Plugin URI: https://arthemes.org/products/good-question-plugin-for-wordpress/
+ * Description: Simple but practical plugin to stop spam comments and registrations on your site.
+ * Version: 1.3.0
  * Release Date: 02/10/2013
  * Author: Artem Frolov (dikiyforester)
  * Author URI: https://arthemes.org
@@ -36,21 +36,21 @@ if ( function_exists( 'bp_init' ) ) {
 	add_action( 'bp_init', 'gq_bp_init' );
 	add_action( 'bp_signup_validate', 'gq_check_answers_bp' );
 } else {
-	add_action( 'template_redirect', 'gq_where_to_run' );
-	add_action( 'login_head', 'gq_print_styles' );
 	add_action( 'register_form', 'gq_print_question', 100 );
 	add_filter( 'registration_errors', 'gq_check_answers', 20, 1 );
 }
 
+add_filter( 'comment_form_default_fields', 'gq_gq_print_comments_form_question', 99999 );
+add_filter( 'preprocess_comment', 'gq_check_comments_form_answers' );
+
 /**
  * Works for BuddyPress
- * if is register gage now - will add actions
+ * if this is register page now - will add actions
  *
  * @since 1.1
  */
 function gq_bp_init() {
 	if ( bp_is_register_page() ) {
-		add_action( 'bp_head', 'gq_print_styles' );
 		add_action( 'bp_before_registration_submit_buttons', 'gq_print_question', 100 );
 	}
 }
@@ -63,25 +63,12 @@ function gq_bp_init() {
  */
 function gq_print_styles() {
 
-	$activated = get_option( 'gq_activated' );
-	$styles    = get_option( 'gq_styles' );
-	if ( empty( $styles ) || 'Yes' != $activated ) {
+	$styles = get_option( 'gq_styles' );
+	if ( empty( $styles ) ) {
 		return;
 	}
 
 	echo '<style type="text/css">' . $styles . '</style>';
-}
-
-/**
- * If registration form placed on custom specified page
- * plugin styles will be printed on this page,
- *
- * @since 1.0
- */
-function gq_where_to_run() {
-	if ( is_page( get_option( 'gq_page' ) ) ) {
-		add_action( 'wp_head', 'gq_print_styles' );
-	}
 }
 
 /**
@@ -97,12 +84,24 @@ function gq_print_question() {
 		return;
 	}
 
+	gq_render_html();
+}
+
+/**
+ * Renders Good Question HTML
+ *
+ * @since 1.3.0
+ */
+function gq_render_html() {
+
 	$question = get_option( 'gq_question' );
 	$answers  = gq_resort_array( get_option( 'gq_answers' ) );
 
 	if ( empty( $question ) || ! is_array( $answers ) ) {
 		return;
 	}
+
+	gq_print_styles();
 	?>
 
 	<div id="gq-wrapper">
@@ -132,6 +131,59 @@ function gq_print_question() {
 }
 
 /**
+ * Print Good Question html on the comments form
+ *
+ * @since 1.3
+ *
+ * @param string[] $fields Array of the default comment fields.
+ *
+ * @return string[]
+ */
+function gq_gq_print_comments_form_question( $fields ) {
+	ob_start();
+
+	$activated = get_option( 'gq_comments' );
+	if ( 'Yes' !== $activated ) {
+		return;
+	}
+
+	gq_render_html();
+
+	$fields['qood_question'] = ob_get_clean();
+
+	return $fields;
+}
+
+/**
+ * Check answers on comment form before insert comment in db.
+ *
+ * @since 1.3
+ *
+ * @param array $commentdata Comment data.
+ *
+ * @return type
+ */
+function gq_check_comments_form_answers( $commentdata ) {
+
+	// If isset author and email fields, so Good Questions is also should be posted.
+	if ( isset( $_POST['author'] ) && isset( $_POST['email'] ) ) {
+		// Nothing to do if GQ is not activated on comments form.
+		$activated = get_option( 'gq_comments' );
+		if ( 'Yes' !== $activated ) {
+			return $commentdata;
+		}
+
+		$errors = new WP_Error();
+		$err    = gq_validate_answers( $errors );
+		if ( ! empty( $err->errors ) ) {
+			wp_die( $err->get_error_message() );
+		}
+	}
+
+	return $commentdata;
+}
+
+/**
  * Check the answers and returns an error during user registration
  *
  * @since 1.0
@@ -145,6 +197,19 @@ function gq_check_answers( $errors ) {
 		return $errors;
 	}
 
+	return gq_validate_answers( $errors );
+}
+
+/**
+ * Validates submitted answers and returns error object on failure.
+ *
+ * @since 1.3
+ *
+ * @param WP_Error $errors
+ *
+ * @return WP_Error
+ */
+function gq_validate_answers( $errors ) {
 	$answers = get_option( 'gq_answers' );
 	if ( $answers ) {
 
@@ -169,6 +234,7 @@ function gq_check_answers( $errors ) {
 			}
 		}
 	}
+
 	return $errors;
 }
 

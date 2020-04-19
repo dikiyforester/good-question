@@ -2,9 +2,9 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Good Question 1.2.1\n"
+"Project-Id-Version: Good Question 1.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-27 14:41:47+00:00\n"
+"POT-Creation-Date: 2020-04-19 15:03:36+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,9 +37,7 @@ msgid "Settings saved."
 msgstr ""
 
 #: includes/gq-admin.php:93
-msgid ""
-"NOTICE: Question will not appear on form while not set property \"Activate "
-"Now\"!"
+msgid "NOTICE: Question will not appear on form while display option is not set!"
 msgstr ""
 
 #: includes/gq-admin.php:101
@@ -92,137 +90,129 @@ msgid ""
 "dashicons-github\"></span> GitHub</a>"
 msgstr ""
 
-#: includes/gq-admin.php:160
+#: includes/gq-admin.php:162
 msgid "Question Settings"
 msgstr ""
 
-#: includes/gq-admin.php:165
-msgid "Registration Page Title | Slug | ID :"
-msgstr ""
-
-#: includes/gq-admin.php:169
-msgid ""
-"If your theme uses special registration page - enter here page Slug or "
-"Title or ID."
-msgstr ""
-
-#: includes/gq-admin.php:170
-msgid ""
-"If your theme uses standard WordPress login/register page - forget this "
-"option and go next."
-msgstr ""
-
-#: includes/gq-admin.php:174
+#: includes/gq-admin.php:167
 msgid "Title:"
 msgstr ""
 
-#: includes/gq-admin.php:177
+#: includes/gq-admin.php:170
 msgid "This is the heading of the question block. (CSS ID: #gq-title)"
 msgstr ""
 
-#: includes/gq-admin.php:181
+#: includes/gq-admin.php:174
 msgid "Question:"
 msgstr ""
 
-#: includes/gq-admin.php:185
+#: includes/gq-admin.php:178
 msgid "Question to which the user must answer. (CSS ID: #gq-question)"
 msgstr ""
 
-#: includes/gq-admin.php:186
+#: includes/gq-admin.php:179
 msgid ""
 "NOTICE: Never use the question and answers by default. Come up with "
 "something unique!"
 msgstr ""
 
-#: includes/gq-admin.php:190
+#: includes/gq-admin.php:183
 msgid "Description:"
 msgstr ""
 
-#: includes/gq-admin.php:193
+#: includes/gq-admin.php:186
 msgid ""
 "Description, which displays after answers and helps user understand what to "
 "do. (CSS ID: #gq-description)"
 msgstr ""
 
-#: includes/gq-admin.php:197
+#: includes/gq-admin.php:190
 msgid "Error Message:"
 msgstr ""
 
-#: includes/gq-admin.php:200
+#: includes/gq-admin.php:193
 msgid ""
 "Error message, which will appear if user not correct answer to the question "
 "and send it to the server."
 msgstr ""
 
-#: includes/gq-admin.php:204
+#: includes/gq-admin.php:197
 msgid "Custom Styles:"
 msgstr ""
 
-#: includes/gq-admin.php:208
+#: includes/gq-admin.php:201
 msgid "This is default CSS properties for Question block on form."
 msgstr ""
 
-#: includes/gq-admin.php:209
+#: includes/gq-admin.php:202
 msgid ""
 "NOTICE: These properties may be different for different themes and "
 "childthemes."
 msgstr ""
 
-#: includes/gq-admin.php:210
+#: includes/gq-admin.php:203
 msgid ""
 "You can set suitable styles and assign different colors or background "
 "images for each individual Answer."
 msgstr ""
 
-#: includes/gq-admin.php:215
-msgid "Activate Now:"
+#: includes/gq-admin.php:208
+msgid "Display on registration form:"
 msgstr ""
 
-#: includes/gq-admin.php:219
+#: includes/gq-admin.php:212 includes/gq-admin.php:223
 msgid "Output of the Question is disabled by default."
 msgstr ""
 
-#: includes/gq-admin.php:220
+#: includes/gq-admin.php:213
 msgid ""
 "It allows admin to set unique question and answers, and only after that "
 "activate Question functionality for users."
 msgstr ""
 
-#: includes/gq-admin.php:221
+#: includes/gq-admin.php:214
 msgid "Set this option to display Question block on the form."
 msgstr ""
 
-#: includes/gq-admin.php:226
-msgid "Delete Plugin Options after deactivation:"
+#: includes/gq-admin.php:219
+msgid "Display on comments form:"
+msgstr ""
+
+#: includes/gq-admin.php:224
+msgid "Set this option to display Question block on the comments form."
 msgstr ""
 
 #: includes/gq-admin.php:229
+msgid "Delete Plugin Options after deactivation:"
+msgstr ""
+
+#: includes/gq-admin.php:232
 msgid ""
 "Set this option if you want to deactivate plugin and clear database from "
 "plugin options."
 msgstr ""
 
-#: includes/gq-admin.php:245
+#: includes/gq-admin.php:248
 msgid "Answers Settings"
 msgstr ""
 
-#: includes/gq-admin.php:246
+#: includes/gq-admin.php:249
 msgid "Answer Text"
 msgstr ""
 
-#: includes/gq-admin.php:247
+#: includes/gq-admin.php:250
 msgid "It's True?"
 msgstr ""
 
-#: includes/gq-admin.php:248
+#: includes/gq-admin.php:251
 msgid "Display Answer?"
 msgstr ""
 
-#: includes/gq-admin.php:254
+#: includes/gq-admin.php:257
 msgid "Answer #"
 msgstr ""
 
-#: includes/gq-admin.php:269
+#: includes/gq-admin.php:272
 msgid "Save Changes"
 msgstr ""
 
@@ -235,17 +225,21 @@ msgid "Just select the correct answers among the proposed"
 msgstr ""
 
 #: includes/gq-init.php:24
-msgid "Select all objects with corners from the list below:"
+msgid "1 + 1 = ?"
 msgstr ""
 
 #: includes/gq-init.php:26
 msgid "ERROR: Failed Spam test - Please try again..."
 msgstr ""
 
+#. Plugin URI of the plugin/theme
+msgid "https://arthemes.org/products/good-question-plugin-for-wordpress/"
+msgstr ""
+
 #. Description of the plugin/theme
 msgid ""
-"Simple plugin to create a unique question and prevent spam-bots "
-"registration on your site."
+"Simple but practical plugin to stop spam comments and registrations on your "
+"site."
 msgstr ""
 
 #. Author of the plugin/theme

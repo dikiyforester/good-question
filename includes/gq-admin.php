@@ -31,7 +31,7 @@ function gq_activate() {
 function gq_deactivate() {
 	if ( 'Yes' === get_option( 'gq_clear' ) ) {
 		require GQ_DIR . '/includes/gq-init.php';
-		$gq_default_config = array_keys( gq_default_config() );
+		$gq_default_config = array_keys( array_merge( gq_default_config(), gq_deprecated_options() ) );
 		foreach ( $gq_default_config as $name ) {
 			delete_option( $name );
 		}
@@ -66,7 +66,7 @@ function gq_get_admin_page_html() {
 		wp_die( __( 'You do not have sufficient permissions to access this page.', 'good-question' ) );
 	}
 
-	if ( isset( $_POST['gq_submit_hidden'] ) && 'Y' === $_POST['gq_submit_hidden'] ) {
+	if ( isset( $_POST['gq_submit'] ) ) {
 		gq_options_update();
 		?>
 		<div class="updated"><p><strong><?php esc_html_e( 'Settings saved.', 'good-question' ); ?></strong></p></div>
@@ -80,17 +80,17 @@ function gq_get_admin_page_html() {
 	$message   = get_option( 'gq_msg', $defaults['gq_msg'] );
 	$styles    = get_option( 'gq_styles', $defaults['gq_styles'] );
 	$activated = get_option( 'gq_activated', $defaults['gq_activated'] );
+	$comments  = get_option( 'gq_comments', $defaults['gq_comments'] );
 	$answers   = get_option( 'gq_answers', $defaults['gq_answers'] );
 	$clear     = get_option( 'gq_clear', $defaults['gq_clear'] );
-	$page      = get_option( 'gq_page', $defaults['gq_page'] );
 
 	// notice for admin to activate Question.
-	if ( 'Yes' !== $activated ) {
+	if ( 'Yes' !== $activated && 'Yes' !== $comments ) {
 		?>
 		<div class="updated">
 			<p>
 				<strong>
-					<?php esc_html_e( 'NOTICE: Question will not appear on form while not set property "Activate Now"!', 'good-question' ); ?>
+					<?php esc_html_e( 'NOTICE: Question will not appear on form while display option is not set!', 'good-question' ); ?>
 				</strong>
 			</p>
 		</div>
@@ -152,7 +152,9 @@ function gq_get_admin_page_html() {
 				<div id="postbox-container-2" class="postbox-container">
 
 					<form id="gq_options_form" name="gq_options_form" method="post" action="" enctype="multipart/form-data">
-						<input type="hidden" name="gq_submit_hidden" value="Y">
+
+						<?php wp_nonce_field( 'update', 'gq_submit' ) ;?>
+
 						<table id="gq_question_table" class="widefat">
 							<!-- Question Settings Table -->
 							<thead>
@@ -161,15 +163,6 @@ function gq_get_admin_page_html() {
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td class="question-settings-left"><label for="gq_register_page"><?php esc_html_e( 'Registration Page Title | Slug | ID :', 'good-question' ); ?></label></td>
-									<td>
-										<input type="text" name="gq_register_page" class="gq-textbox" value="<?php echo esc_attr( $page ); ?>"/><br />
-										<span class="gq-desc">
-											<?php esc_html_e( 'If your theme uses special registration page - enter here page Slug or Title or ID.', 'good-question' ); ?><br />
-											<?php esc_html_e( 'If your theme uses standard WordPress login/register page - forget this option and go next.', 'good-question' ); ?></span>
-									</td>
-								</tr>
 								<tr>
 									<td class="question-settings-left"><label for="gq_question_title"><?php esc_html_e( 'Title:', 'good-question' ); ?></label></td>
 									<td>
@@ -212,13 +205,23 @@ function gq_get_admin_page_html() {
 									</td>
 								</tr>
 								<tr>
-									<td class="question-settings-left"><label for="gq_activated"><?php esc_html_e( 'Activate Now:', 'good-question' ); ?></label></td>
+									<td class="question-settings-left"><label for="gq_activated"><?php esc_html_e( 'Display on registration form:', 'good-question' ); ?></label></td>
 									<td>
 										<input type="checkbox" name="gq_activated" value="Yes" <?php checked( $activated, 'Yes', true ); ?>/><br />
 										<span class="gq-desc">
 											<?php esc_html_e( 'Output of the Question is disabled by default.', 'good-question' ); ?><br />
 											<?php esc_html_e( 'It allows admin to set unique question and answers, and only after that activate Question functionality for users.', 'good-question' ); ?><br />
 											<?php esc_html_e( 'Set this option to display Question block on the form.', 'good-question' ); ?>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="question-settings-left"><label for="gq_comments"><?php esc_html_e( 'Display on comments form:', 'good-question' ); ?></label></td>
+									<td>
+										<input type="checkbox" name="gq_comments" value="Yes" <?php checked( $comments, 'Yes', true ); ?>/><br />
+										<span class="gq-desc">
+											<?php esc_html_e( 'Output of the Question is disabled by default.', 'good-question' ); ?><br />
+											<?php esc_html_e( 'Set this option to display Question block on the comments form.', 'good-question' ); ?>
 										</span>
 									</td>
 								</tr>
@@ -284,17 +287,15 @@ function gq_get_admin_page_html() {
  */
 function gq_options_update() {
 
+	check_admin_referer( 'update', 'gq_submit' );
+
 	$question  = array();
 	$styles    = '';
 	$message   = '';
 	$activated = '';
+	$comments  = '';
 	$answers   = array();
 	$clear     = '';
-	$page      = '';
-
-	if ( isset( $_POST['gq_register_page'] ) ) {
-		$page = sanitize_text_field( $_POST['gq_register_page'] );
-	}
 
 	if ( isset( $_POST['gq_clear'] ) && 'Yes' == $_POST['gq_clear'] ) {
 		$clear = 'Yes';
@@ -302,6 +303,10 @@ function gq_options_update() {
 
 	if ( isset( $_POST['gq_activated'] ) && 'Yes' == $_POST['gq_activated'] ) {
 		$activated = 'Yes';
+	}
+
+	if ( isset( $_POST['gq_comments'] ) && 'Yes' == $_POST['gq_comments'] ) {
+		$comments = 'Yes';
 	}
 
 	if ( isset( $_POST['gq_question_title'] ) ) {
@@ -347,9 +352,9 @@ function gq_options_update() {
 	update_option( 'gq_msg', $message );
 	update_option( 'gq_styles', $styles );
 	update_option( 'gq_activated', $activated );
+	update_option( 'gq_comments', $comments );
 	update_option( 'gq_answers', $answers );
 	update_option( 'gq_clear', $clear );
-	update_option( 'gq_page', $page );
 }
 
 /**
