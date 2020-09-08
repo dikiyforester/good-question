@@ -3,7 +3,7 @@
  * Plugin Name: Good Question
  * Plugin URI: https://arthemes.org/products/good-question-plugin-for-wordpress/
  * Description: Simple but practical plugin to stop spam comments and registrations on your site.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Release Date: 02/10/2013
  * Author: Artem Frolov (dikiyforester)
  * Author URI: https://arthemes.org
@@ -144,7 +144,7 @@ function gq_gq_print_comments_form_question( $fields ) {
 
 	$activated = get_option( 'gq_comments' );
 	if ( 'Yes' !== $activated ) {
-		return;
+		return $fields;
 	}
 
 	gq_render_html();
